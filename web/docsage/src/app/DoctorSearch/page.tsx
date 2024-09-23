@@ -1,12 +1,14 @@
-'use client'
-import React, { useState } from 'react';
-import Image from 'next/image';
-import Link from 'next/link';
+'use client';
+import React from 'react';
+import Image from "next/image";
+import Link from "next/link";
+import { useState } from "react";
+import DoctorSearch from '@/app/components/DoctorSearch';
 import useTheme from '@/hooks/useTheme';
 
-const AboutPage = () => {
-  const [theme, setTheme] = useTheme();
+const DoctorSearchPage = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [theme, setTheme] = useTheme();
 
   const toggleTheme = () => {
     setTheme(theme === 'light' ? 'dark' : 'light');
@@ -91,75 +93,12 @@ const AboutPage = () => {
         </div>
       </header>
 
-      <main className="flex-grow">
-        <div className="container mx-auto px-4 py-16">
-          <h1 className={`text-4xl font-bold text-center mb-8 ${theme === 'light' ? 'text-gray-800' : 'text-white'}`}>About Techno Geek</h1>
-          
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div className="space-y-6">
-              <p className={`text-lg ${theme === 'light' ? 'text-gray-600' : 'text-gray-300'}`}>
-                At Techno Geek, we're passionate about empowering businesses with cutting-edge technology solutions. Our team of expert developers, designers, and strategists work tirelessly to bring your digital visions to life.
-              </p>
-              <p className={`text-lg ${theme === 'light' ? 'text-gray-600' : 'text-gray-300'}`}>
-                Founded in 2010, we've been at the forefront of technological innovation, helping companies of all sizes navigate the ever-changing digital landscape.
-              </p>
-              <div className="mt-6">
-                <h3 className="text-blue-500 font-semibold mb-4">Our Expertise:</h3>
-                <div className="grid grid-cols-2 gap-4">
-                  {[
-                    { icon: "🌐", title: "Web Development", description: "Crafting responsive, user-friendly websites" },
-                    { icon: "📱", title: "Mobile App Creation", description: "Building intuitive apps for iOS and Android" },
-                    { icon: "☁️", title: "Cloud Solutions", description: "Scalable and secure cloud infrastructure" },
-                    { icon: "🤖", title: "AI & Machine Learning", description: "Intelligent systems for smart decision-making" }
-                  ].map((item, index) => (
-                    <div key={index} className={`p-4 rounded-lg transition-all duration-300 hover:shadow-md hover:-translate-y-1 ${theme === 'light' ? 'bg-gray-100' : 'bg-gray-800'}`}>
-                      <div className="text-2xl mb-2">{item.icon}</div>
-                      <h4 className={`font-semibold mb-1 ${theme === 'light' ? 'text-gray-800' : 'text-white'}`}>{item.title}</h4>
-                      <p className={`text-sm ${theme === 'light' ? 'text-gray-600' : 'text-gray-300'}`}>{item.description}</p>
-                    </div>
-                  ))}
-                </div>
-              </div>
+      <main className="flex-grow w-full px-4 py-8">
+        <div className="container mx-auto">
+          <div className="flex justify-center items-center">
+            <div className={`w-full max-w-4xl ${theme === 'light' ? 'bg-white' : 'bg-gray-800'} shadow-xl rounded-lg p-6`}>
+              <DoctorSearch />
             </div>
-            
-            <div className="relative">
-              <Image 
-                src="/Techno-Geek.png" 
-                alt="Techno Geek Team" 
-                width={500}
-                height={300}
-                className="rounded-lg shadow-xl transition-transform duration-300 hover:scale-105"
-              />
-              <div className="absolute -bottom-4 -right-4 bg-blue-500 text-white p-4 rounded-lg shadow-lg transform rotate-3 transition-transform duration-300 hover:rotate-0">
-                <p className="font-bold">10+ Years</p>
-                <p className="text-sm">of Excellence</p>
-              </div>
-            </div>
-          </div>
-
-          <div className="mt-16">
-            <h2 className={`text-3xl font-semibold text-center mb-8 ${theme === 'light' ? 'text-gray-800' : 'text-white'}`}>Our Values</h2>
-            <div className="grid md:grid-cols-3 gap-8">
-              {[
-                { title: "Innovation", icon: "💡" },
-                { title: "Collaboration", icon: "🤝" },
-                { title: "Excellence", icon: "🏆" }
-              ].map((value, index) => (
-                <div key={index} className={`p-6 rounded-lg shadow-md transition-all duration-300 hover:shadow-xl hover:-translate-y-2 ${theme === 'light' ? 'bg-white' : 'bg-gray-800'}`}>
-                  <div className="text-4xl mb-4">{value.icon}</div>
-                  <h3 className={`text-xl font-semibold mb-2 ${theme === 'light' ? 'text-gray-800' : 'text-white'}`}>{value.title}</h3>
-                  <p className={`${theme === 'light' ? 'text-gray-600' : 'text-gray-300'}`}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          <div className="mt-16 text-center">
-            <h2 className={`text-3xl font-semibold mb-4 ${theme === 'light' ? 'text-gray-800' : 'text-white'}`}>Ready to get started?</h2>
-            <p className={`text-lg mb-8 ${theme === 'light' ? 'text-gray-600' : 'text-gray-300'}`}>Let's turn your ideas into reality!</p>
-            <button className="bg-blue-500 hover:bg-blue-600 text-white px-8 py-3 rounded-full text-lg font-medium transition-all duration-300 hover:shadow-lg transform hover:-translate-y-1">
-              Contact Us Today
-            </button>
           </div>
         </div>
       </main>
@@ -167,4 +106,4 @@ const AboutPage = () => {
   );
 };
 
-export default AboutPage;
+export default DoctorSearchPage;
